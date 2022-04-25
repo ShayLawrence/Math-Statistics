@@ -1,0 +1,79 @@
+library(MASS)
+help(Boston)
+attach(Boston)
+summary(rm)
+
+par(mfrow=c(2,2))
+plot(rm)
+hist(rm, main= "Histogram of number of Rooms")
+qqnorm(rm, main= "QQ-plot for number of Rooms")
+qqline(rm)
+boxplot(rm)
+
+shapiro.test(rm)
+
+#One-sample t-test for the mean μ
+t.test(rm, mu=6)
+
+#One-Sample t Test: Non-parametric Wilcoxon Signed-Rank Test
+wilcox.test(dis, mu=3.5)
+
+wilcox.test(dis, mu = 3.5, alternative="less")
+wilcox.test(dis, mu=3.5, alternative= "greater")
+
+#Two Sample Test
+detach(Boston) ### important
+attach(anorexia)
+dif <- Postwt - Prewt
+dif.Cont <- dif[which(Treat=="Cont")]
+
+t.test(dif.Cont)
+
+wilcox.test(dif.Cont)
+
+t.test(Postwt[which(Treat=="Cont")], Prewt[which(Treat=="Cont")], paired=TRUE)
+
+#Paired t Test in R: Parametric Two-sample T-test
+detach(anorexia)
+attach(Pima.tr)
+?Pima.tr
+t.test(glu ~ type)
+
+t.test(glu ~ type, var.equal=T)
+var.test(glu ~ type)
+
+#Two-Sample t Test in R: Independent Groups 
+wilcox.test(glu ~ type)
+wilcox.test(glu[type=="Yes"],glu[type=="No"])   # alternative way to call the test
+
+
+#ANOVA
+bmi.label <-  c("Underweight/Normalweight", "Overweight", "Obesity")
+summary(bmi)
+bmi.break <- c(18, 24.9, 29.9, 50)
+bmi.cat <- cut(bmi, breaks=bmi.break, labels = bmi.label)
+table(bmi.cat)
+bmi.cat
+
+bmi.cat <- factor(bmi.cat)
+bmi.anova <- aov(glu ~ bmi.cat)
+print(model.tables(bmi.anova, "means"))
+
+summary(bmi.anova)
+
+pairwise.t.test(glu, bmi.cat, p.adj = "none")
+
+pairwise.t.test(glu, bmi.cat, p.adj = "bonferroni")
+
+TukeyHSD(bmi.anova)
+
+boxplot(glu~bmi.cat)
+
+bartlett.test(glu~bmi.cat)
+
+kruskal.test(glu~bmi.cat)
+
+
+
+
+
