@@ -1,0 +1,40 @@
+#Modified R Code to Insert Own Colors for Contingency Table
+D1 <- c (2,3)
+D2<- c (3,5)
+data<- data.frame(D1, D2)
+names(data)<- c("M1","M2")
+barplot(height=as.matrix(data),main="Practice",ylab="Vaccine",beside=TRUE,col=c("yellow","orange"))
+legend("topleft",c("W1","W2"),cex=1.0,bty="n",fill=c("yellow","orange"))
+
+#Modified R Code to Create Contingency Table
+D1 <- c (2,3)
+D2<- c (3,5)
+data<- data.frame(D1, D2)
+names(data)<- c("M1","M2")
+barplot(height=as.matrix(data),main="Practice",ylab="Vaccine",beside=TRUE,col=rainbow (2))
+legend ("topleft",c("W1","W2"),cex=1.0,bty="n",fill=rainbow (2))
+
+#Practice R Code For 4x4
+D1 <- c (2,3,6,7)
+D2<- c (3,5,3,1)
+D3 <- c (5,5,7,4)
+data<- data.frame(D1, D2, D3)
+names(data)<- c("M1","M2","M3")
+barplot(height=as.matrix(data),main="Analysis-1",ylab="Vaccine",beside=TRUE,col=rainbow (4))
+legend ("topleft",c("Week1","Week2","Week3","Week4"),cex=1.0,bty="n",fill=rainbow (4))
+
+#Modified R Code to Create 2x4
+D1 <- c (2,3,6,7)
+D2<- c (3,5,3,1)
+data<- data.frame(D1, D2)
+names(data)<- c("M1","M2")
+barplot(height=as.matrix(data),main="Practice",ylab="Vaccine",beside=TRUE,col=rainbow (4))
+legend ("topleft",c("W1","W2","W3","W4"),cex=1.0,bty="n",fill=rainbow (4))
+
+Modified R Code To Apply The Above Skills To Harvard Physician Health Study on Aspirin and Heart Attacks
+P<- c(189,10845)
+A<- c(104,10933)
+data<- data.frame(P,A)
+names(data)<- c("Placebo","Aspirin")
+barplot(height=as.matrix(data),main="Heart Attacks",ylab="Number of Attacks", beside=TRUE,col=c("red","blue"))
+legend ("topleft",c("Yes","No"),cex=1.0,bty="n",fill=c("red","blue"))
